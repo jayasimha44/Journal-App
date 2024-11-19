@@ -1,5 +1,6 @@
 package com.learn.journalapp.controller;
 
+import com.learn.journalapp.cache.AppCache;
 import com.learn.journalapp.entity.User;
 import com.learn.journalapp.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 public class AdminController {
 
     private final UserService userService;
+    private final AppCache appCache;
 
 
     @GetMapping("/all-users")
@@ -32,5 +34,10 @@ public class AdminController {
         }
         userService.createAdmin(user);
         return ResponseEntity.ok("Admin Created successfully!");
+    }
+
+    @GetMapping("clear-app-cache")
+    public void clearCache() {
+        appCache.init();
     }
 }

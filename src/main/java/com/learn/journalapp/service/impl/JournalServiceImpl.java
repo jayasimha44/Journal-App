@@ -71,7 +71,7 @@ public class JournalServiceImpl implements JournalService {
             userRepository.save(user);
             return journalDto1;
         } catch (Exception e) {
-            throw new ResourceNotFoundException(e.getMessage());
+            throw new ResourceNotFoundException("Journal Not found!");
         }
     }
 
